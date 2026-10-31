@@ -501,9 +501,9 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
   .topo,.painel{max-width:1320px}
   .capa{max-width:none;padding-left:calc(var(--gutter) + 18px)}
   .capa h1 span{color:#6e6e6e}
-  .capa .capa-foto::after{background:linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,.45) 28%,rgba(255,255,255,0) 44%)}
-  /* foto vertical: ocupa quase a capa toda, com o rosto à mostra, e some suave perto do começo da frase */
-  .capa .capa-foto > img{left:auto;width:80%;object-position:50% 16%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%);mask-image:linear-gradient(90deg,transparent,#000 16%)}
+  .capa .capa-foto::after{background:linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,.5) 30%,rgba(255,255,255,0) 48%)}
+  /* foto ocupa o quadro branco inteiro; o rosto fica à direita da frase */
+  .capa .capa-foto > img{object-position:50% 18%}
   .capa-ola{left:auto;right:34%;top:60%}
   .capa-ola-2{right:6%;top:76%}
   .sobre-mim{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;padding:44px 48px;margin-top:56px;align-items:start}
