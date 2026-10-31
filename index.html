@@ -343,8 +343,9 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 .busca select:focus-visible,.busca button:focus-visible{outline:2px solid var(--rosa);outline-offset:2px}
 @media (max-width:959px){
   .capa{padding-bottom:300px}
-  .capa-ola{top:44%;left:4%}
-  .capa .capa-ola-2{top:61%;left:auto;right:4%}
+  /* no celular: lado a lado, cada uma em duas linhas, na altura do peito */
+  .capa-ola{top:53%;left:4%;flex-direction:column;align-items:flex-start;gap:0;padding:8px 14px;border-radius:16px;font-size:11.5px;line-height:1.3}
+  .capa .capa-ola-2{top:57%;left:auto;right:4%}
 }
 @media (min-width:960px){
   .busca{left:28px;right:28px;bottom:28px;padding:20px 24px}
