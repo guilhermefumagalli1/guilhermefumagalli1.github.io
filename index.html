@@ -918,9 +918,13 @@ const cartaoImovel = m => `<li><a href="${m.link || SITE_LITORAL || "#imoveis"}"
   <b>${m.preco}</b><strong>${m.titulo}</strong><small>${m.local}</small><small>${m.detalhes}</small></a></li>`;
 const trilhoImoveis = document.getElementById("trilhoImoveis");
 trilhoImoveis.innerHTML = IMOVEIS.map(cartaoImovel).join("");
-// setas: passam uma "tela" de imóveis por vez (4 no computador, 2 no celular)
+// setas: passam uma "tela" de imóveis por vez (4 no computador, 2 no celular) e dão a volta sem fim:
+// no último, a seta da direita volta ao primeiro; no primeiro, a da esquerda vai ao último
 document.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => {
-  trilhoImoveis.scrollBy({ left: Number(b.dataset.dir) * trilhoImoveis.clientWidth, behavior: "smooth" });
+  const dir = Number(b.dataset.dir), fim = trilhoImoveis.scrollWidth - trilhoImoveis.clientWidth, pos = trilhoImoveis.scrollLeft;
+  if (dir > 0 && pos >= fim - 4) trilhoImoveis.scrollTo({ left: 0, behavior: "smooth" });
+  else if (dir < 0 && pos <= 4) trilhoImoveis.scrollTo({ left: fim, behavior: "smooth" });
+  else trilhoImoveis.scrollBy({ left: dir * trilhoImoveis.clientWidth, behavior: "smooth" });
 }));
 
 // Depoimentos: copia a lista uma vez para a faixa rodar sem emenda
