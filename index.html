@@ -921,7 +921,7 @@ addEventListener("scroll", marcaRolagem, { passive: true });
 marcaRolagem();
 
 // Barra de baixo: o botão da parte que está na tela fica em rosa
-const botoesNav = [...document.querySelectorAll("#nav a[data-alvo]")];
+const botoesNav = [...document.querySelectorAll("#nav a[data-alvo], .menu a[data-alvo]")];
 function marcaNav() {
   const meio = innerHeight * 0.45;
   let atual = "comeco";
