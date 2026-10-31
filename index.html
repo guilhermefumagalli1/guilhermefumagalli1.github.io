@@ -149,21 +149,33 @@ h1,h2,h3{font-family:var(--titulo);font-weight:700;text-transform:uppercase;marg
 .imoveis-topo{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:16px}
 .imoveis-topo .rotulo{color:var(--rosa)}
 .imoveis-topo h2{margin:10px 0 0;font-size:40px;color:#ffffff}
-.imoveis-setas{display:flex;gap:8px}
-.imoveis-setas button{width:44px;height:44px;border:0;border-radius:50%;background:var(--rosa);display:grid;place-items:center;cursor:pointer;transition:transform .2s}
-.imoveis-setas button:hover{transform:scale(1.08)}
-.imoveis-setas button:focus-visible{outline:2px solid #ffffff;outline-offset:3px}
-.imoveis-setas svg{width:20px;height:20px;fill:none;stroke:#111111;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.imoveis-setas{display:flex;align-items:center;gap:8px}
+.imoveis-setas button{width:40px;height:40px;border:1.5px solid #ffffff;border-radius:50%;background:transparent;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.imoveis-setas button:hover{background:rgba(255,255,255,.14)}
+.imoveis-setas button:focus-visible,.imoveis-todos:focus-visible{outline:2px solid var(--rosa);outline-offset:3px}
+.imoveis-setas svg{width:18px;height:18px;fill:none;stroke:#ffffff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.imoveis-todos{margin-right:6px;padding:10px 22px;border:1.5px solid #ffffff;border-radius:999px;color:#ffffff;font-size:13.5px;font-weight:600;white-space:nowrap;transition:background .2s,color .2s}
+.imoveis-todos:hover{background:#ffffff;color:#111111}
+/* cartões de foto inteira, com as informações por cima, num degradê escuro embaixo */
 .imoveis-trilho{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 12px) / 2);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;list-style:none;margin:0;padding:0}
 .imoveis-trilho::-webkit-scrollbar{display:none}
 .imoveis-trilho li{scroll-snap-align:start;min-width:0}
-.imoveis-trilho a{display:flex;flex-direction:column;gap:3px;height:100%;padding:8px 8px 14px;border-radius:20px;background:#fff;color:#111111;transition:transform .2s}
-.imoveis-trilho a:hover{transform:translateY(-3px)}
-.imovel-foto{aspect-ratio:4/3;margin-bottom:8px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#fff3b0,#f2f2f0 60%,#e4e4e1);display:grid;place-items:center;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.4)}
-.imovel-foto img{width:100%;height:100%;object-fit:cover}
-.imoveis-trilho b{padding:0 6px;font-size:17px}
-.imoveis-trilho strong{padding:0 6px;font-size:13.5px;line-height:1.3}
-.imoveis-trilho small{padding:0 6px;font-size:12px;color:#777777}
+.imoveis-trilho a{position:relative;display:flex;align-items:flex-end;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:#2a2a2a;color:#ffffff;isolation:isolate}
+.imoveis-trilho img{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.imoveis-trilho a:hover img{transform:scale(1.05)}
+.imoveis-trilho a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 62%,rgba(0,0,0,.85))}
+.imovel-info{display:grid;gap:6px;width:100%;padding:14px}
+.imovel-info strong{font-size:15px;line-height:1.25}
+.imovel-preco{display:flex;align-items:center;gap:8px}
+.imovel-preco i{padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.22);font-style:normal;font-size:10.5px;font-weight:500}
+.imovel-preco b{font-size:14px}
+.imovel-info small{font-size:11px;line-height:1.4;color:rgba(255,255,255,.82)}
+.imovel-btn{margin-top:4px;padding:8px;border:1px solid rgba(255,255,255,.7);border-radius:999px;text-align:center;font-size:12px;transition:background .2s,color .2s}
+.imoveis-trilho a:hover .imovel-btn{background:#ffffff;color:#111111}
+@media (max-width:959px){
+  .imoveis-topo{flex-wrap:wrap}
+  .imovel-preco{flex-wrap:wrap;gap:4px 6px}
+}
 @media (min-width:960px){
   .imoveis-topo h2{font-size:56px}
   .imoveis-trilho{grid-auto-columns:calc((100% - 3 * 16px) / 4);gap:16px}
