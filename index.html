@@ -831,14 +831,6 @@ const marcaRolagem = () => topo.classList.toggle("rolou", scrollY > 10);
 addEventListener("scroll", marcaRolagem, { passive: true });
 marcaRolagem();
 
-// "Minhas redes": a chavinha abre e fecha a caixa ali mesmo
-const caixaRedes = document.getElementById("caixa-redes"), abrirRedes = document.getElementById("abrir-redes");
-abrirRedes.addEventListener("click", () => abrirRedes.setAttribute("aria-expanded", caixaRedes.classList.toggle("aberto")));
-// "Redes" da barra de baixo e do menu: rola até a caixa e já deixa ela aberta
-document.querySelectorAll('.js-abre-redes, .menu a[href="#caixa-redes"]').forEach(a => a.addEventListener("click", () => {
-  caixaRedes.classList.add("aberto"); abrirRedes.setAttribute("aria-expanded", "true");
-}));
-
 // Barra de baixo: o botão da parte que está na tela fica em rosa
 const botoesNav = [...document.querySelectorAll("#nav a[data-alvo]")];
 function marcaNav() {
