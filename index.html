@@ -658,28 +658,22 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
           <span class="caixa-seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </a></li>
       </ul>
-  </section>
-  <!-- ================= DESTAQUE DO MOMENTO ================= -->
-  <section class="miolo revela">
-    <div class="destaque">
-      <span class="selo-pilula">novidade</span>
-      <div>
-        <small>Destaque do momento</small>
-        <!-- EDITAR: o serviço do momento (título, texto e mensagem do WhatsApp lá no script) -->
-        <h2>Seu destaque aqui</h2>
-        <p class="destaque-texto">Coloque aqui o serviço do momento, o seu destaque.</p>
-      </div>
-      <a class="pilula js-whats-destaque" href="#conversar" target="_blank" rel="noopener">
-        <span>Quero saber mais<b>fala comigo no WhatsApp</b></span>
-        <span class="seta">→</span>
-      </a>
-    </div>
+      -->
   </section>
 
-  <!-- ================= FAIXA DE MARCAS (lista no script lá embaixo) ================= -->
-  <section class="miolo marcas revela" id="marcas" aria-label="Marcas com quem já trabalhei">
-    <p class="marcas-titulo">Marcas que confiam no meu trabalho</p>
-    <div class="marcas-faixa"><div class="marcas-trilho" id="faixaMarcas"></div></div>
+  <!-- ================= IMÓVEIS EM DESTAQUE (lista no script lá embaixo) ================= -->
+  <section class="miolo revela" id="imoveis" aria-label="Imóveis em destaque">
+    <div class="imoveis-topo">
+      <div>
+        <span class="rotulo">Litoral Imóveis</span>
+        <h2>Imóveis em destaque</h2>
+      </div>
+      <div class="imoveis-setas">
+        <button type="button" data-dir="-1" aria-label="Imóveis anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" data-dir="1" aria-label="Próximos imóveis"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <ul class="imoveis-trilho" id="trilhoImoveis"></ul>
   </section>
 
   <!-- ================= SOBRE MIM: de canto a canto, título de um lado e a história do outro (sem foto) ================= -->
