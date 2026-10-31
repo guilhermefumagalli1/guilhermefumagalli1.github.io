@@ -578,6 +578,25 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 /* entrada suave */
 .revela{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .revela.visivel{opacity:1;transform:none}
+/* ---------- topo do computador: barra transparente em cima da foto, menu em pílula e botão "Fale comigo" ---------- */
+.topo-cta{display:none}
+@media (min-width:1061px){
+  .topo{background:transparent;padding:18px 28px 10px 34px}
+  .topo.rolou{background:#fff}
+  .painel{margin-top:-78px;border-radius:36px}
+  .capa .capa-foto{border-radius:36px}
+  .menu > ul{gap:2px;padding:5px;border-radius:999px;background:rgba(17,17,17,.42);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+  .menu > ul > li > a{padding:9px 18px;border-radius:999px;font-size:14.5px;font-weight:500;color:#ffffff;transition:background .2s,color .2s}
+  .menu > ul > li > a:hover{background:rgba(255,255,255,.16);color:#ffffff}
+  .menu > ul > li > a.ativo{background:#ffffff;color:#111111}
+  .menu .seta-baixo{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:1.6}
+  .submenu a{color:#2b2b2b}
+  .topo-cta{display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:var(--rosa);color:#111111;font-size:14.5px;font-weight:600;transition:transform .2s}
+  .topo-cta:hover{transform:translateY(-2px)}
+  /* título no meio da altura da capa, com a busca embaixo */
+  .capa{display:flex;flex-direction:column;justify-content:center;min-height:min(calc(100svh - 40px),760px);padding-top:110px;padding-bottom:190px}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
