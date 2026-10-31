@@ -462,6 +462,8 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
   .capa .pesquisa button{width:34px;height:34px}
   .capa .pesquisa svg{width:15px;height:15px}
   .capa .capa-foto::after{background:linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.7) 38%,rgba(255,255,255,0) 62%)}
+  /* foto vertical: fica à direita, com o rosto à mostra, e some suave para a esquerda */
+  .capa .capa-foto > img{left:auto;width:52%;object-position:50% 14%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%);mask-image:linear-gradient(90deg,transparent,#000 30%)}
   .sobre-mim{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;padding:44px 48px;margin-top:56px;align-items:start}
   .sobre-mim h2{font-size:56px}
   .sobre-texto .sobre-abre{font-size:21px}
