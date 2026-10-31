@@ -892,8 +892,11 @@ const IMOVEIS = [
   { titulo: "Casa térrea com piscina", local: "Park D'Aville · 1,5 km da praia", preco: "R$ 490.000", detalhes: "2 quartos · 3 vagas · 85 m²", foto: "fotos/imoveis/11797.webp", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11797/casa---terrea-com-piscina-com-2-quartos--sendo-1-suite-s---a-1500-00-metros-praia-/?show=v1&interesse=Venda" }
 ];
 const cartaoImovel = m => `<li><a href="${m.link || SITE_LITORAL || "#imoveis"}"${m.link || SITE_LITORAL ? ' target="_blank" rel="noopener"' : ""}>
-  <span class="imovel-foto">${m.foto ? `<img src="${m.foto}" alt="${m.titulo}" loading="lazy" decoding="async">` : "Foto do imóvel"}</span>
-  <b>${m.preco}</b><strong>${m.titulo}</strong><small>${m.local}</small><small>${m.detalhes}</small></a></li>`;
+  ${m.foto ? `<img src="${m.foto}" alt="${m.titulo}" loading="lazy" decoding="async">` : ""}
+  <span class="imovel-info"><strong>${m.titulo}</strong>
+    <span class="imovel-preco"><i>${m.detalhes.split(" · ").pop()}</i><b>${m.preco}</b></span>
+    <small>${m.detalhes.split(" · ").slice(0, -1).join(" · ")} · ${m.local}</small>
+    <span class="imovel-btn">Ver detalhes</span></span></a></li>`;
 const trilhoImoveis = document.getElementById("trilhoImoveis");
 trilhoImoveis.innerHTML = IMOVEIS.map(cartaoImovel).join("");
 // setas: passam uma "tela" de imóveis por vez (4 no computador, 2 no celular) e dão a volta sem fim:
