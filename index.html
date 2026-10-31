@@ -970,28 +970,27 @@ const cartaoImovel = m => `<li><a href="${m.link || SITE_LITORAL || "#imoveis"}"
     <span class="imovel-btn">Ver detalhes</span></span></a></li>`;
 const trilhoImoveis = document.getElementById("trilhoImoveis");
 trilhoImoveis.innerHTML = IMOVEIS.map(cartaoImovel).join("");
-// as setas (e o giro automático) passam de um imóvel para o próximo, dando a volta sem fim,
-// e a faixa rola para deixar o imóvel da vez no meio
-const cartoesImoveis = [...trilhoImoveis.children];
-let imovelAtivo = 0;
-function destacaImovel(i, rolar = true) {
-  imovelAtivo = (i + cartoesImoveis.length) % cartoesImoveis.length;
-  cartoesImoveis.forEach((li, n) => li.classList.toggle("grande", n === imovelAtivo));
-  if (!rolar) return;
-  const li = cartoesImoveis[imovelAtivo];
-  const meio = li.getBoundingClientRect().left - trilhoImoveis.getBoundingClientRect().left - (trilhoImoveis.clientWidth - li.offsetWidth) / 2;
-  trilhoImoveis.scrollTo({ left: trilhoImoveis.scrollLeft + meio, behavior: "smooth" });
+// faixa com setas (imóveis e depoimentos): as setas e o giro automático passam de um cartão para o próximo,
+// dando a volta sem fim, e a faixa rola para deixar o cartão da vez no meio.
+// O giro para quando o mouse ou o dedo está na seção.
+function carrossel(faixa, cartoes, secao, tempo) {
+  let atual = 0, pausa = false;
+  const vaiPara = i => {
+    atual = (i + cartoes.length) % cartoes.length;
+    const c = cartoes[atual];
+    const meio = c.getBoundingClientRect().left - faixa.getBoundingClientRect().left - (faixa.clientWidth - c.offsetWidth) / 2;
+    faixa.scrollTo({ left: faixa.scrollLeft + meio, behavior: "smooth" });
+  };
+  secao.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => vaiPara(atual + Number(b.dataset.dir))));
+  ["mouseenter", "touchstart", "focusin"].forEach(ev => secao.addEventListener(ev, () => pausa = true, { passive: true }));
+  ["mouseleave", "focusout"].forEach(ev => secao.addEventListener(ev, () => pausa = false));
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    setInterval(() => { if (!pausa && !document.hidden) vaiPara(atual + 1); }, tempo);
+  }
 }
-destacaImovel(0, false);
-document.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => destacaImovel(imovelAtivo + Number(b.dataset.dir))));
-// giro automático a cada 4,5 s; para quando o mouse ou o dedo está nos imóveis
-const secaoImoveis = document.getElementById("imoveis");
-let pausaImoveis = false;
-["mouseenter", "touchstart", "focusin"].forEach(ev => secaoImoveis.addEventListener(ev, () => pausaImoveis = true, { passive: true }));
-["mouseleave", "focusout"].forEach(ev => secaoImoveis.addEventListener(ev, () => pausaImoveis = false));
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  setInterval(() => { if (!pausaImoveis && !document.hidden) destacaImovel(imovelAtivo + 1); }, 4500);
-}
+carrossel(trilhoImoveis, [...trilhoImoveis.children], document.getElementById("imoveis"), 4500);
+const faixaDepo = document.getElementById("faixaDepo");
+carrossel(faixaDepo, [...faixaDepo.querySelectorAll(".depo")], document.getElementById("depoimentos"), 5000);
 
 // Depoimentos: copia a lista uma vez para a faixa rodar sem emenda
 
