@@ -526,8 +526,9 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
   /* foto ocupa o quadro branco inteiro: nítida à direita (rosto ao lado da frase) e a mesma foto desfocada atrás da frase */
   .capa .capa-foto::before{content:"";position:absolute;inset:-30px;background:url(fotos/capa.jpg) 0 22%/600% auto;filter:blur(14px)}
   .capa .capa-foto > img{left:auto;width:60%;object-position:50% 14%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%)}
-  .capa-ola{left:auto;right:34%;top:60%}
-  .capa-ola-2{right:6%;top:76%}
+  .capa{min-height:min(calc(100svh - 110px),680px);padding-bottom:180px}
+  .capa-ola{left:auto;right:34%;top:40%}
+  .capa-ola-2{right:6%;top:54%}
   .sobre-mim{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;padding:44px 48px;margin-top:56px;align-items:start}
   .sobre-mim h2{font-size:56px}
   .sobre-texto .sobre-abre{font-size:21px}
