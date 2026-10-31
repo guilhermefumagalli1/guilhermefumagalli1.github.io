@@ -390,6 +390,8 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 .quem-lista{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:0;padding:0;list-style:none;font-size:13px;font-weight:600;line-height:1.35}
 .quem-lista li{display:flex;gap:8px}
 .quem-lista b{flex:none;color:#c99a00;font-size:12px}
+/* no celular, o texto vem primeiro e as fotos depois */
+@media (max-width:959px){ .quem-fotos{order:2} }
 @media (min-width:960px){
   #historia{margin-top:56px}
   .quem{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:44px 48px}
