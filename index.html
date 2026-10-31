@@ -857,10 +857,16 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 
   <!-- ================= DEPOIMENTOS ================= -->
   <section class="miolo revela" id="depoimentos" aria-label="Depoimentos">
-    <p class="marcas-titulo">O que os clientes dizem</p>
+    <div class="depo-topo">
+      <p class="marcas-titulo">O que os clientes dizem</p>
+      <div class="imoveis-setas depo-setas">
+        <button type="button" data-dir="-1" aria-label="Depoimentos anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" data-dir="1" aria-label="Próximos depoimentos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
     <!-- EDITAR: um cartão por depoimento (avaliações do Google) -->
-    <!-- a lista roda sozinha de ponta a ponta; o script duplica para o giro não ter emenda -->
-    <div class="depo-faixa"><div class="depo-trilho" id="trilhoDepo">
+    <!-- a faixa passa um depoimento por vez, pelas setas ou sozinha -->
+    <div class="depo-faixa" id="faixaDepo"><div class="depo-trilho">
     <div class="depoimentos">
       <figure class="depo"><blockquote>Consegui vender meu imóvel mais rápido do que esperava. Parabéns!</blockquote><figcaption><b>Milena Dalcastagne</b><span>★★★★★ Avaliação no Google</span></figcaption></figure>
       <figure class="depo"><blockquote>Excelente atendimento, profissional muito bem preparada, não deixa dúvidas sobre as etapas da negociação, tudo muito claro e justo. Recomendo! Parabéns!</blockquote><figcaption><b>Hiago Fernandes do Nascimento</b><span>★★★★★ Avaliação no Google</span></figcaption></figure>
