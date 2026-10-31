@@ -322,7 +322,7 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 /* capa: a foto ocupa a capa toda e o texto fica por cima */
 .capa{position:relative;isolation:isolate;align-content:start;min-height:min(calc(100svh - 150px),700px);padding:28px calc(var(--gutter) + 20px) 180px}
 .capa-esquerda{position:relative;z-index:2}
-.capa .capa-foto{position:absolute;z-index:-1;inset:0 var(--gutter);aspect-ratio:auto;height:auto;margin:0}
+.capa .capa-foto{position:absolute;z-index:-1;inset:0;aspect-ratio:auto;height:auto;margin:0;border-radius:0 0 36px 36px}
 /* véu claro para o texto ler bem em cima de qualquer foto */
 .capa .capa-foto::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.45) 30%,rgba(255,255,255,0) 50%)}
 .capa h1 span{color:#9a9a9a}
