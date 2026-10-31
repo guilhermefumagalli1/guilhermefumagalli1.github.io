@@ -927,7 +927,8 @@ function destacaImovel(i, rolar = true) {
   cartoesImoveis.forEach((li, n) => li.classList.toggle("grande", n === imovelAtivo));
   if (!rolar) return;
   const li = cartoesImoveis[imovelAtivo];
-  trilhoImoveis.scrollTo({ left: li.offsetLeft - trilhoImoveis.offsetLeft - (trilhoImoveis.clientWidth - li.offsetWidth) / 2, behavior: "smooth" });
+  const meio = li.getBoundingClientRect().left - trilhoImoveis.getBoundingClientRect().left - (trilhoImoveis.clientWidth - li.offsetWidth) / 2;
+  trilhoImoveis.scrollTo({ left: trilhoImoveis.scrollLeft + meio, behavior: "smooth" });
 }
 destacaImovel(0, false);
 document.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => destacaImovel(imovelAtivo + Number(b.dataset.dir))));
