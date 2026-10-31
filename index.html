@@ -803,9 +803,20 @@ const SITE_LITORAL = "https://www.litoralimoveisperuibe.com.br/";
 document.querySelectorAll(".js-site").forEach(a => { if (SITE_LITORAL) a.href = SITE_LITORAL; });
 
 // EDITAR: imóveis em destaque (foto na pasta "fotos/imoveis"; link = página do imóvel no site)
-const IMOVEIS = Array.from({ length: 10 }, (_, i) => ({
-  titulo: "Imóvel " + (i + 1), local: "Bairro, Peruíbe", preco: "R$ 000.000", detalhes: "0 dorm · 0 vagas · 000 m²", foto: "", link: ""
-}));
+const IMOVEL_URL = id => `https://litoralimoveisperuibe.com.br/ver-imovel/${id}/?show=v1&interesse=Venda`;
+const IMOVEIS = [
+  { titulo: "Casa térrea", local: "Ribamar · 700 m da praia", preco: "R$ 650.000", detalhes: "2 quartos · 2 vagas · 157 m²", foto: "fotos/imoveis/8417.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/8417/casa---terrea-com-2-quartos--sendo-2-suite-s---a-700-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Casa térrea", local: "Flórida · 800 m da praia", preco: "R$ 650.000", detalhes: "3 quartos · 3 vagas · 162 m²", foto: "fotos/imoveis/11752.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11752/casa---terrea-com-3-quartos--sendo-2-suite-s---a-800-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Casa térrea", local: "Jd. Barra de Jangadas · 20 m da praia", preco: "R$ 790.000", detalhes: "3 quartos · 2 vagas · 150 m²", foto: "fotos/imoveis/11698.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11698/casa---terrea-com-3-quartos--sendo-1-suite-s---a-20-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Casa térrea com edícula", local: "Maria Helena Novaes · 70 m da praia", preco: "R$ 690.000", detalhes: "2 quartos · 6 vagas · 189 m²", foto: "fotos/imoveis/11422.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11422/casa---terrea-com-edicula-com-2-quartos--sendo-1-suite-s---a-70-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Casa térrea com piscina", local: "Cidade Nova Peruíbe · 720 m da praia", preco: "R$ 750.000", detalhes: "3 quartos · 4 vagas · 135 m²", foto: "fotos/imoveis/11195.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11195/casa---terrea-com-piscina-com-3-quartos--sendo-1-suite-s---a-720-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Sobrado novo com piscina", local: "Flora Rica · 1,4 km da praia", preco: "R$ 1.950.000", detalhes: "4 suítes · 4 vagas · 227 m²", foto: "fotos/imoveis/11493.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11493/casa---sobrado-novo-com-4-quartos--sendo-4-suite-s---a-1400-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Casa térrea", local: "Flora Rica · 1,4 km da praia", preco: "R$ 680.000", detalhes: "3 quartos · 2 vagas · 115 m²", foto: "fotos/imoveis/11291.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11291/casa---terrea-com-3-quartos--sendo-terrea-suite-s---a-1400-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Sobrado com piscina", local: "Flora Rica · 1,5 km da praia", preco: "R$ 2.000.000", detalhes: "4 suítes · 2 vagas · 260 m²", foto: "fotos/imoveis/11098.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11098/casa---sobrado-com-4-quartos--sendo-4-suite-s---a-1500-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Sobrado novo com piscina", local: "Flora Rica · 1,5 km da praia", preco: "R$ 2.200.000", detalhes: "5 quartos · 4 vagas · 288 m²", foto: "fotos/imoveis/10753.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/10753/casa---sobrado-novo-com-5-quartos--sendo-3-suite-s---a-1500-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Sobrado triplex", local: "Flora Rica · 1,2 km da praia", preco: "R$ 2.900.000", detalhes: "4 suítes · 3 vagas · 486 m²", foto: "fotos/imoveis/11319.jpg", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11319/casa---sobrado-triplex-com-4-quartos--sendo-4-suite-s---a-1200-00-metros-praia-/?show=v1&interesse=Venda" },
+  { titulo: "Casa térrea com piscina", local: "Park D'Aville · 1,5 km da praia", preco: "R$ 490.000", detalhes: "2 quartos · 3 vagas · 85 m²", foto: "fotos/imoveis/11797.webp", link: "https://litoralimoveisperuibe.com.br/ver-imovel/11797/casa---terrea-com-piscina-com-2-quartos--sendo-1-suite-s---a-1500-00-metros-praia-/?show=v1&interesse=Venda" }
+];
 const cartaoImovel = m => `<li><a href="${m.link || SITE_LITORAL || "#imoveis"}"${m.link || SITE_LITORAL ? ' target="_blank" rel="noopener"' : ""}>
   <span class="imovel-foto">${m.foto ? `<img src="${m.foto}" alt="${m.titulo}" loading="lazy" decoding="async">` : "Foto do imóvel"}</span>
   <b>${m.preco}</b><strong>${m.titulo}</strong><small>${m.local}</small><small>${m.detalhes}</small></a></li>`;
