@@ -624,13 +624,50 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
     <!-- EDITAR: título de ponta a ponta (as palavras dentro de <span> ficam em cinza) -->
     <h1>Do sonho <span>às chaves</span><br><span>da sua</span> casa própria</h1>
 
-    <div class="capa-esquerda">
-      <!-- barra de pesquisa: procura nos links da página -->
-      <form class="pesquisa" id="pesquisa" role="search">
-        <input type="search" id="pesquisa-texto" placeholder="Corretor de imóveis em Peruíbe" aria-label="Pesquisar nos links">
-        <button type="submit" aria-label="Pesquisar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
-      </form>
-    </div>
+    <p class="capa-sub">Corretor de imóveis em Peruíbe</p>
+
+    <!-- busca de imóveis: abre a busca do site da Litoral Imóveis já com os filtros escolhidos -->
+    <form class="busca" action="https://litoralimoveisperuibe.com.br/encontre-um-imovel" method="get" target="_blank">
+      <p class="busca-titulo">Encontre seu imóvel ideal</p>
+      <div class="busca-campos">
+        <label>Quero
+          <select name="interesse" id="busca-interesse">
+            <option value="Comprar">Comprar</option>
+            <option value="Alugar">Alugar</option>
+          </select>
+        </label>
+        <label>Tipo
+          <select name="categoria" id="busca-categoria">
+            <option value="">Todos</option>
+            <option value="Casa">Casa</option>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Terreno">Terreno</option>
+            <option value="Chácara">Chácara</option>
+            <option value="Comercial">Comercial</option>
+          </select>
+        </label>
+        <label>Preço até
+          <select name="faixaMax" id="busca-preco">
+            <option value="">Qualquer valor</option>
+            <option value="300.000,00">R$ 300 mil</option>
+            <option value="500.000,00">R$ 500 mil</option>
+            <option value="700.000,00">R$ 700 mil</option>
+            <option value="1.000.000,00">R$ 1 milhão</option>
+            <option value="2.000.000,00">R$ 2 milhões</option>
+          </select>
+        </label>
+        <label>Distância da praia
+          <select name="distancia" id="busca-praia">
+            <option value="">Qualquer</option>
+            <option value="200">Até 200 m</option>
+            <option value="500">Até 500 m</option>
+            <option value="1000">Até 1 km</option>
+            <option value="1500">Até 1,5 km</option>
+          </select>
+        </label>
+        <button type="submit">Buscar imóveis</button>
+      </div>
+    </form>
     <!-- EDITAR: frase com aspas (fica no canto de baixo, à direita da capa) -->
     <!-- caixinhas que flutuam devagar em cima da foto -->
     <p class="capa-ola vidro"><b>Mais de 10 anos</b> de mercado</p>
