@@ -325,9 +325,12 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 .vitrines i{width:30px;height:30px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;font-style:normal;font-size:13px}
 /* depoimentos */
 #depoimentos{margin-top:40px}
-.depo-faixa{margin:0 calc(50% - 50vw);overflow:hidden}
-.depo-trilho{display:flex;width:max-content;animation:rolar 150s linear infinite}
-.depo-faixa:hover .depo-trilho{animation-play-state:paused}
+.depo-faixa{margin:0 calc(50% - 50vw);overflow-x:auto;scrollbar-width:none}
+.depo-faixa::-webkit-scrollbar{display:none}
+.depo-trilho{display:flex;width:max-content}
+.depo-topo{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.depo-topo .marcas-titulo{margin:0}
+.depo-setas button{width:36px;height:36px}
 /* todas as caixinhas do mesmo tamanho (a altura acompanha o depoimento mais longo) */
 .depoimentos{display:flex;align-items:stretch;gap:12px;padding:4px 6px 30px}
 .depo{flex:none;width:260px}
