@@ -179,10 +179,9 @@ h1,h2,h3{font-family:var(--titulo);font-weight:700;text-transform:uppercase;marg
 }
 @media (min-width:960px){
   .imoveis-topo h2{font-size:56px}
-  .imoveis-trilho{grid-auto-columns:calc((100% - 3 * 16px) / 4);gap:16px;padding-top:40px}
-  /* cartões alternados em alturas diferentes, como na referência */
-  .imoveis-trilho li:nth-child(even){margin-top:-40px}
-  .imoveis-trilho li:nth-child(odd) a{aspect-ratio:3/3.6}
+  .imoveis-trilho{grid-auto-columns:calc((100% - 4 * 18px) / 4.6);gap:18px}
+  .imoveis-trilho a{height:360px}
+  .imoveis-trilho li.grande a{height:460px}
   .imovel-info{padding:18px}
   .imovel-info strong{font-size:17px}
 }
