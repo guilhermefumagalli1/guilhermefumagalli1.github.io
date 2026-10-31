@@ -359,7 +359,11 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 .busca button:hover{background:#333333}
 .busca select:focus-visible,.busca button:focus-visible{outline:2px solid var(--rosa);outline-offset:2px}
 @media (max-width:959px){
-  .capa{padding-bottom:300px}
+  /* no celular a busca fica metade em cima da foto e metade para fora, no fundo preto, para mostrar mais a foto */
+  .painel{overflow:visible;background:transparent;margin-bottom:150px}
+  .capa .capa-foto{border-radius:0 0 24px 24px}
+  .capa{padding-bottom:170px}
+  .busca{bottom:auto;top:calc(100% - 110px)}
   /* no celular: lado a lado, cada uma em duas linhas, na altura do peito */
   .capa-ola{top:53%;left:4%;flex-direction:column;align-items:flex-start;gap:0;padding:8px 14px;border-radius:16px;font-size:11.5px;line-height:1.3}
   .capa .capa-ola-2{top:57%;left:auto;right:4%}
