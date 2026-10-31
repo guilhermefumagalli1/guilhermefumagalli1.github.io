@@ -974,8 +974,8 @@ const cartaoImovel = m => `<li><a href="${m.link || SITE_LITORAL || "#imoveis"}"
     <span class="imovel-btn">Ver detalhes</span></span></a></li>`;
 const trilhoImoveis = document.getElementById("trilhoImoveis");
 trilhoImoveis.innerHTML = IMOVEIS.map(cartaoImovel).join("");
-// um imóvel por vez fica grande; as setas (e o giro automático) passam o destaque para o próximo,
-// dando a volta sem fim, e a faixa rola para deixar o grande no meio
+// as setas (e o giro automático) passam de um imóvel para o próximo, dando a volta sem fim,
+// e a faixa rola para deixar o imóvel da vez no meio
 const cartoesImoveis = [...trilhoImoveis.children];
 let imovelAtivo = 0;
 function destacaImovel(i, rolar = true) {
