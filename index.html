@@ -494,9 +494,13 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
   .capa .pesquisa input{font-size:13px}
   .capa .pesquisa button{width:34px;height:34px}
   .capa .pesquisa svg{width:15px;height:15px}
-  .capa .capa-foto::after{background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.72) 36%,rgba(255,255,255,0) 54%)}
+  /* capa mais larga, quase de ponta a ponta da tela, com a frase encostada à esquerda */
+  body{padding-left:12px;padding-right:12px}
+  .topo,.painel{max-width:1640px}
+  .capa{max-width:1640px;padding-left:calc(var(--gutter) + 18px)}
+  .capa .capa-foto::after{background:linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,.45) 28%,rgba(255,255,255,0) 44%)}
   /* foto vertical: ocupa quase a capa toda, com o rosto à mostra, e some suave perto do começo da frase */
-  .capa .capa-foto > img{left:auto;width:76%;object-position:50% 16%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 26%);mask-image:linear-gradient(90deg,transparent,#000 26%)}
+  .capa .capa-foto > img{left:auto;width:80%;object-position:50% 16%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%);mask-image:linear-gradient(90deg,transparent,#000 16%)}
   .capa-ola{left:auto;right:34%;top:60%}
   .capa-ola-2{right:6%;top:76%}
   .sobre-mim{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;padding:44px 48px;margin-top:56px;align-items:start}
