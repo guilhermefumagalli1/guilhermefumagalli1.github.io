@@ -361,6 +361,8 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 @media (max-width:959px){
   /* no celular a busca fica metade em cima da foto e metade para fora, no fundo preto, para mostrar mais a foto */
   .painel{overflow:visible;background:transparent;margin-bottom:230px}
+  /* o mesmo respiro (88px) entre todas as partes da página, igual ao da busca para os imóveis */
+  .resto > #imoveis ~ section,main + .conversar{margin-top:88px}
   .capa .capa-foto{border-radius:0 0 24px 24px}
   .capa{padding-bottom:170px}
   .busca{bottom:auto;top:calc(100% - 70px)}
