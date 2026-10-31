@@ -994,10 +994,6 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
 }
 
 // Depoimentos: copia a lista uma vez para a faixa rodar sem emenda
-const trilhoDepo = document.getElementById("trilhoDepo");
-const copiaDepo = trilhoDepo.firstElementChild.cloneNode(true);
-copiaDepo.setAttribute("aria-hidden", "true");
-trilhoDepo.appendChild(copiaDepo);
 
 // Aviso rápido no rodapé da tela
 const aviso = document.getElementById("aviso");
