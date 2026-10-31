@@ -917,14 +917,27 @@ const cartaoImovel = m => `<li><a href="${m.link || SITE_LITORAL || "#imoveis"}"
     <span class="imovel-btn">Ver detalhes</span></span></a></li>`;
 const trilhoImoveis = document.getElementById("trilhoImoveis");
 trilhoImoveis.innerHTML = IMOVEIS.map(cartaoImovel).join("");
-// setas: passam uma "tela" de imóveis por vez (4 no computador, 2 no celular) e dão a volta sem fim:
-// no último, a seta da direita volta ao primeiro; no primeiro, a da esquerda vai ao último
-document.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => {
-  const dir = Number(b.dataset.dir), fim = trilhoImoveis.scrollWidth - trilhoImoveis.clientWidth, pos = trilhoImoveis.scrollLeft;
-  if (dir > 0 && pos >= fim - 4) trilhoImoveis.scrollTo({ left: 0, behavior: "smooth" });
-  else if (dir < 0 && pos <= 4) trilhoImoveis.scrollTo({ left: fim, behavior: "smooth" });
-  else trilhoImoveis.scrollBy({ left: dir * trilhoImoveis.clientWidth, behavior: "smooth" });
-}));
+// um imóvel por vez fica grande; as setas (e o giro automático) passam o destaque para o próximo,
+// dando a volta sem fim, e a faixa rola para deixar o grande no meio
+const cartoesImoveis = [...trilhoImoveis.children];
+let imovelAtivo = 0;
+function destacaImovel(i, rolar = true) {
+  imovelAtivo = (i + cartoesImoveis.length) % cartoesImoveis.length;
+  cartoesImoveis.forEach((li, n) => li.classList.toggle("grande", n === imovelAtivo));
+  if (!rolar) return;
+  const li = cartoesImoveis[imovelAtivo];
+  trilhoImoveis.scrollTo({ left: li.offsetLeft - trilhoImoveis.offsetLeft - (trilhoImoveis.clientWidth - li.offsetWidth) / 2, behavior: "smooth" });
+}
+destacaImovel(0, false);
+document.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => destacaImovel(imovelAtivo + Number(b.dataset.dir))));
+// giro automático a cada 4,5 s; para quando o mouse ou o dedo está nos imóveis
+const secaoImoveis = document.getElementById("imoveis");
+let pausaImoveis = false;
+["mouseenter", "touchstart", "focusin"].forEach(ev => secaoImoveis.addEventListener(ev, () => pausaImoveis = true, { passive: true }));
+["mouseleave", "focusout"].forEach(ev => secaoImoveis.addEventListener(ev, () => pausaImoveis = false));
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  setInterval(() => { if (!pausaImoveis && !document.hidden) destacaImovel(imovelAtivo + 1); }, 4500);
+}
 
 // Depoimentos: copia a lista uma vez para a faixa rodar sem emenda
 const trilhoDepo = document.getElementById("trilhoDepo");
