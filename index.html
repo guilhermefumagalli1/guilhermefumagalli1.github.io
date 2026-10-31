@@ -157,7 +157,7 @@ h1,h2,h3{font-family:var(--titulo);font-weight:700;text-transform:uppercase;marg
 .imoveis-todos{margin-right:6px;padding:10px 22px;border:1.5px solid #ffffff;border-radius:999px;color:#ffffff;font-size:13.5px;font-weight:600;white-space:nowrap;transition:background .2s,color .2s}
 .imoveis-todos:hover{background:#ffffff;color:#111111}
 /* cartões de foto inteira, com as informações por cima, num degradê escuro embaixo */
-/* um cartão por vez fica grande (classe "grande", trocada pelo script); os outros ficam mais baixos, alinhados embaixo */
+/* todos os cartões do mesmo tamanho; o script vai rolando a faixa um imóvel por vez */
 .imoveis-trilho{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 12px) / 2);align-items:end;gap:12px;overflow-x:auto;scrollbar-width:none;list-style:none;margin:0;padding:0}
 .imoveis-trilho::-webkit-scrollbar{display:none}
 .imoveis-trilho li{min-width:0}
