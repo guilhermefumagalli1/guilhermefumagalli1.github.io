@@ -1004,20 +1004,6 @@ function aplicaIdioma(lang) {
 document.querySelectorAll(".idioma button").forEach(b => b.addEventListener("click", () => aplicaIdioma(b.dataset.lang)));
 try { if (localStorage.getItem("idioma") === "en") aplicaIdioma("en"); } catch (e) {}
 
-// Barra de pesquisa da capa: procura nas caixinhas de links e mostra só as que combinam
-const formPesquisa = document.getElementById("pesquisa"), campoPesquisa = document.getElementById("pesquisa-texto");
-const caixasLinks = [...document.querySelectorAll("#links .caixas > li")];
-const semAcento = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-function filtraLinks() {
-  const termo = semAcento(campoPesquisa.value.trim());
-  caixasLinks.forEach(li => li.hidden = !!termo && !semAcento(li.textContent).includes(termo));
-}
-campoPesquisa.addEventListener("input", filtraLinks);
-formPesquisa.addEventListener("submit", e => {
-  e.preventDefault();
-  filtraLinks();
-  document.getElementById("links").scrollIntoView({ behavior: "smooth", block: "start" });
-});
 // Entrada suave dos blocos
 const obs = "IntersectionObserver" in window && new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add("visivel"); obs.unobserve(e.target); }
