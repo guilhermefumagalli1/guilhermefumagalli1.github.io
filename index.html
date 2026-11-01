@@ -420,19 +420,38 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
   .quem-texto h2{font-size:52px}
 }
 
-/* ---------- mapa da Litoral Imóveis ---------- */
-#endereco{margin-top:40px}
-.mapa{display:grid;gap:20px}
-.mapa-texto h2{margin:10px 0 12px;font-size:36px}
-.mapa-endereco{margin:0 0 6px;font-size:16px;font-weight:600;line-height:1.5}
-.mapa-horario{margin:0 0 18px;font-size:14px;color:#666666}
-.mapa-btn{display:inline-flex;padding:11px 22px;border-radius:999px;background:#111111;color:#ffffff;font-size:14px;font-weight:600;transition:background .2s}
+/* ---------- contato: mapa grande + cartão "Me encontre aqui" por cima ---------- */
+.contato{position:relative;margin-top:40px}
+.contato-mapa{position:relative;height:420px;border-radius:28px;overflow:hidden;background:#2a2a2a}
+.contato-mapa iframe{display:block;width:100%;height:100%;border:0}
+.contato-local{position:absolute;top:14px;left:14px;right:14px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#111111;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.contato-local h2{margin:0 0 6px;font-size:30px}
+.contato-local p{margin:0 0 4px;font-size:12.5px;line-height:1.45;color:#555555}
+.contato-local p b{color:#111111}
+.mapa-btn{display:inline-flex;margin-top:8px;padding:9px 18px;border-radius:999px;background:#111111;color:#ffffff;font-size:13px;font-weight:600;transition:background .2s}
 .mapa-btn:hover{background:#333333}
-.mapa-frame{width:100%;height:300px;border:0;border-radius:16px;background:#eeeeee}
+.contato-cartao{position:relative;z-index:2;display:grid;gap:8px;margin:-40px 10px 0;padding:20px 16px 16px;border-radius:24px;background:#ffffff;color:#111111;box-shadow:0 24px 50px -24px rgba(0,0,0,.6)}
+.contato-cartao h3{margin:0 0 6px;font-family:var(--titulo);font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.contato-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;background:#f4f4f2;transition:transform .2s,background .2s}
+.contato-item:hover{transform:translateY(-2px);background:#ecece8}
+.contato-item i{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#111111}
+.contato-item i svg{width:19px;height:19px}
+.ci-whats{background:var(--rosa)}
+.ci-mail{background:#dbe7ff}
+.ci-insta{background:#ffe0ef}
+.ci-tiktok{background:#e3e3e3}
+.contato-item span{flex:1;min-width:0;display:grid}
+.contato-item b{font-size:14.5px}
+.contato-item small{font-size:12px;color:#666666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contato-item em{flex:none;width:28px;height:28px;border-radius:50%;background:#ffffff;display:grid;place-items:center;font-style:normal;font-size:13px}
 @media (min-width:960px){
-  .mapa{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:40px;align-items:center;padding:32px 40px}
-  .mapa-texto h2{font-size:52px}
-  .mapa-frame{height:380px}
+  .contato{margin-top:64px}
+  .contato-mapa{width:74%;height:540px}
+  .contato-local{right:auto;max-width:440px;top:24px;left:24px;padding:22px 24px}
+  .contato-local h2{font-size:44px}
+  .contato-local p{font-size:13.5px}
+  .contato-cartao{position:absolute;top:50%;right:0;width:400px;margin:0;padding:26px 22px 22px;transform:translateY(-45%)}
+  .contato-cartao h3{font-size:30px}
 }
 
 .sobre-mim{display:grid;gap:6px;margin-top:40px}
