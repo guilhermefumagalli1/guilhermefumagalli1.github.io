@@ -451,7 +451,8 @@ h1{font-weight:600;font-size:clamp(38px,11vw,70px);line-height:1;letter-spacing:
 @media (min-width:960px){
   .contato{margin-top:64px}
   .contato-mapa{width:74%;height:540px}
-  .contato-local{max-width:290px;top:18px;left:18px;padding:12px 14px}
+  /* no computador o quadro do Google é maior: o nosso fica do mesmo tamanho, por cima, e esconde ele */
+  .contato-local{width:340px;max-width:none;min-height:120px;top:8px;left:8px;padding:14px 16px}
   .contato-local p{font-size:12px}
   .contato-cartao{position:absolute;top:50%;right:var(--gutter);width:400px;margin:0;padding:26px 22px 22px;transform:translateY(-45%)}
   .contato-cartao h3{font-size:40px}
