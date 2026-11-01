@@ -1003,8 +1003,41 @@ function carrossel(faixa, cartoes, secao, tempo) {
   }
 }
 carrossel(trilhoImoveis, [...trilhoImoveis.children], document.getElementById("imoveis"), 4500);
-const faixaDepo = document.getElementById("faixaDepo");
-carrossel(faixaDepo, [...faixaDepo.querySelectorAll(".depo")], document.getElementById("depoimentos"), 5000);
+// Feedbacks: rolam sem parar, bem devagar (25 px por segundo). A lista é copiada uma vez para o giro não ter emenda.
+// Para quando o mouse ou o dedo está em cima; as setas pulam um depoimento para o lado.
+const faixaDepo = document.getElementById("faixaDepo"), trilhoDepo = faixaDepo.firstElementChild;
+const copiaDepo = trilhoDepo.firstElementChild.cloneNode(true);
+copiaDepo.setAttribute("aria-hidden", "true");
+trilhoDepo.appendChild(copiaDepo);
+const secaoDepo = document.getElementById("depoimentos");
+let posDepo = 0, pausaDepo = false, ultimoQuadro = performance.now();
+const metadeDepo = () => trilhoDepo.scrollWidth / 2;
+const mostraDepo = () => trilhoDepo.style.transform = `translateX(${-posDepo}px)`;
+const lento = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+function rolaDepo(agora) {
+  const passou = Math.min(agora - ultimoQuadro, 100);
+  ultimoQuadro = agora;
+  if (lento && !pausaDepo && !document.hidden) {
+    posDepo = (posDepo + passou * 0.025) % metadeDepo();
+    mostraDepo();
+  }
+  requestAnimationFrame(rolaDepo);
+}
+requestAnimationFrame(rolaDepo);
+["mouseenter", "touchstart", "focusin"].forEach(ev => secaoDepo.addEventListener(ev, () => pausaDepo = true, { passive: true }));
+["mouseleave", "focusout"].forEach(ev => secaoDepo.addEventListener(ev, () => pausaDepo = false));
+secaoDepo.addEventListener("touchend", () => setTimeout(() => pausaDepo = false, 2500), { passive: true });
+secaoDepo.querySelectorAll(".imoveis-setas button").forEach(b => b.addEventListener("click", () => {
+  const passo = trilhoDepo.querySelector(".depo").offsetWidth + 12, dir = Number(b.dataset.dir), metade = metadeDepo();
+  // se o pulo passar da emenda, volta meia faixa antes (sem animação), assim a volta não aparece
+  if (dir > 0 && posDepo + passo >= metade) { posDepo -= metade; mostraDepo(); }
+  if (dir < 0 && posDepo - passo < 0) { posDepo += metade; mostraDepo(); }
+  trilhoDepo.getBoundingClientRect();
+  trilhoDepo.style.transition = "transform .6s ease";
+  posDepo += dir * passo;
+  mostraDepo();
+  setTimeout(() => trilhoDepo.style.transition = "", 650);
+}));
 
 // Depoimentos: copia a lista uma vez para a faixa rodar sem emenda
 
