@@ -1199,7 +1199,7 @@ function posicionaBusca() {
   busca.style.top = topo + "px";
   creci.style.top = topo - 32 + "px";
   // o espaço até os imóveis fica igual ao das outras partes da página (88px abaixo da busca)
-  painel.style.marginBottom = Math.max(0, topo + busca.offsetHeight - c.height + 88) + "px";
+  painel.style.marginBottom = Math.max(0, topo + busca.offsetHeight - c.height + 72) + "px";
 }
 const fotoCapa = document.querySelector(".capa-foto > img");
 fotoCapa.complete ? posicionaBusca() : fotoCapa.addEventListener("load", posicionaBusca);
