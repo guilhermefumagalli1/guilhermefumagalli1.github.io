@@ -1185,6 +1185,27 @@ function aplicaIdioma(lang) {
 document.querySelectorAll(".idioma button").forEach(b => b.addEventListener("click", () => aplicaIdioma(b.dataset.lang)));
 try { if (localStorage.getItem("idioma") === "en") aplicaIdioma("en"); } catch (e) {}
 
+// Celular: a busca da capa começa logo abaixo das mãos da foto (e o CRECI logo acima dela).
+// Mede onde as mãos ficam na foto em cada celular, porque a capa muda de altura de um aparelho para outro.
+const MAOS_NA_FOTO = 0.555; // altura das mãos na foto da capa (0 = topo, 1 = base)
+function posicionaBusca() {
+  const capa = document.querySelector(".capa"), foto = document.querySelector(".capa-foto > img");
+  const busca = document.querySelector(".busca"), creci = document.querySelector(".capa-creci"), painel = document.querySelector(".painel");
+  if (innerWidth >= 960) { busca.style.top = creci.style.top = painel.style.marginBottom = ""; return; }
+  if (!foto.naturalWidth) return;
+  const f = foto.getBoundingClientRect(), c = capa.getBoundingClientRect();
+  const escala = Math.max(f.width / foto.naturalWidth, f.height / foto.naturalHeight);
+  const topo = Math.round(f.top - c.top + foto.naturalHeight * escala * MAOS_NA_FOTO + 10);
+  busca.style.top = topo + "px";
+  creci.style.top = topo - 32 + "px";
+  // o espaço até os imóveis fica igual ao das outras partes da página
+  painel.style.marginBottom = Math.max(48, topo + busca.offsetHeight - c.height + 48) + "px";
+}
+const fotoCapa = document.querySelector(".capa-foto > img");
+fotoCapa.complete ? posicionaBusca() : fotoCapa.addEventListener("load", posicionaBusca);
+addEventListener("resize", posicionaBusca);
+document.fonts && document.fonts.ready.then(posicionaBusca);
+
 // Entrada suave dos blocos
 const obs = "IntersectionObserver" in window && new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add("visivel"); obs.unobserve(e.target); }
